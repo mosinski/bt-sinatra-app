@@ -1,4 +1,4 @@
-mutation ExampleCharge($input: ChargePaymentMethodInput!) {
+mutation ChargePaymentMethod($input: ChargePaymentMethodInput!) {
   chargePaymentMethod(input: $input) {
     transaction {
       id
