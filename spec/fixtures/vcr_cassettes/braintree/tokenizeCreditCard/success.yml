@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!)
+        {\n  tokenizeCreditCard(input: $input) {\n    paymentMethod {\n      id\n      legacyId\n      usage\n      createdAt\n    }\n  }\n}\n","variables":{"input":{"creditCard":{"number":"4111
+        1111 1111 1111","expirationYear":"22","expirationMonth":"11","cvv":"123","cardholderName":"John
+        Doe"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic MDEyMzQ6NTY3ODk=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:35:04 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '220'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"tokenizeCreditCard":{"paymentMethod":{"id":"tokencc_bd_28ccdq_5yhrkn_6zr26m_vggrx4_vd4","legacyId":"tokencc_bd_28ccdq_5yhrkn_6zr26m_vggrx4_vd4","usage":"SINGLE_USE","createdAt":"2021-01-20T14:35:05.316962Z"}}},"extensions":{"requestId":"7564e56a-d4f1-408f-a2c5-4c27cf192f14"}}'
+  recorded_at: Wed, 20 Jan 2021 14:35:05 GMT
+recorded_with: VCR 6.0.0

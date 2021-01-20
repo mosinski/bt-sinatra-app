@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation ChargeCreditCard($input: ChargeCreditCardInput!)
+        {\n  chargeCreditCard(input: $input) {\n    transaction {\n      id\n      status\n    }\n  }\n}\n","variables":{"input":{"paymentMethodId":"123","transaction":{"amount":"10.00"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic MDEyMzQ6NTY3ODk=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:45:02 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '263'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"message":"Unknown or expired single-use payment method.","locations":[{"line":2,"column":3}],"path":["chargeCreditCard"],"extensions":{"errorClass":"VALIDATION","errorType":"user_error","inputPath":["input","paymentMethodId"],"legacyCode":"91565"}}],"data":{"chargeCreditCard":null},"extensions":{"requestId":"1e199fc2-9a51-4467-9641-8cd47d1fda36"}}'
+  recorded_at: Wed, 20 Jan 2021 14:45:02 GMT
+recorded_with: VCR 6.0.0

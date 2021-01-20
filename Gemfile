@@ -1,11 +1,15 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '2.7.2'
+ruby "2.7.2"
 
-gem 'sinatra'
-gem 'faraday'
-gem 'dotenv'
-gem 'thin'
-gem 'rake'
-gem 'sass'
-gem 'sinatra-assetpack'
+gem "sinatra"
+gem "faraday"
+gem "dotenv"
+gem "rake"
+
+group :test do
+  gem "vcr"
+  gem "rspec"
+  gem "webmock"
+  gem "rack-test"
+end

@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation CreateClientToken($input: CreateClientTokenInput)
+        {\n  createClientToken(input: $input) {\n    clientToken\n  }\n}\n","variables":{"input":{"clientToken":{"merchantAccountId":"c9xsvrgrw2pw63bj"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic MDEyMzQ6NTY3ODk=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:18:26 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '1671'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"createClientToken":{"clientToken":"eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJleUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpGVXpJMU5pSXNJbXRwWkNJNklqSXdNVGd3TkRJMk1UWXRjMkZ1WkdKdmVDSXNJbWx6Y3lJNkltaDBkSEJ6T2k4dllYQnBMbk5oYm1SaWIzZ3VZbkpoYVc1MGNtVmxaMkYwWlhkaGVTNWpiMjBpZlEuZXlKbGVIQWlPakUyTVRFeU16ZzNNRFlzSW1wMGFTSTZJak15TXpBMFlUUmlMV0kzWTJVdE5EZzBPQzFoWXpaaExUbGpPR0prWmpnME5XWmtOU0lzSW5OMVlpSTZJbU01ZUhOMmNtZHlkekp3ZHpZelltb2lMQ0pwYzNNaU9pSm9kSFJ3Y3pvdkwyRndhUzV6WVc1a1ltOTRMbUp5WVdsdWRISmxaV2RoZEdWM1lYa3VZMjl0SWl3aWJXVnlZMmhoYm5RaU9uc2ljSFZpYkdsalgybGtJam9pWXpsNGMzWnlaM0ozTW5CM05qTmlhaUlzSW5abGNtbG1lVjlqWVhKa1gySjVYMlJsWm1GMWJIUWlPblJ5ZFdWOUxDSnlhV2RvZEhNaU9sc2liV0Z1WVdkbFgzWmhkV3gwSWwwc0luTmpiM0JsSWpwYklrSnlZV2x1ZEhKbFpUcFdZWFZzZENKZExDSnZjSFJwYjI1eklqcDdJbTFsY21Ob1lXNTBYMkZqWTI5MWJuUmZhV1FpT2lKak9YaHpkbkpuY25jeWNIYzJNMkpxSW4xOS5TWXl1OXlSZktORGlPNU03RGpsVW5YOVFPQ1NGYUNZRjdhUWs2dmtBUF9tUkhTT1hKdm9Wa3JCRE8ydFJuejdVcjk1SU5Va3VFTnFSQXBTQkd4cnNWdyIsImNvbmZpZ1VybCI6Imh0dHBzOi8vYXBpLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy9jOXhzdnJncncycHc2M2JqL2NsaWVudF9hcGkvdjEvY29uZmlndXJhdGlvbiIsIm1lcmNoYW50QWNjb3VudElkIjoiYzl4c3ZyZ3J3MnB3NjNiaiIsImdyYXBoUUwiOnsidXJsIjoiaHR0cHM6Ly9wYXltZW50cy5zYW5kYm94LmJyYWludHJlZS1hcGkuY29tL2dyYXBocWwiLCJkYXRlIjoiMjAxOC0wNS0wOCIsImZlYXR1cmVzIjpbInRva2VuaXplX2NyZWRpdF9jYXJkcyJdfSwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL2M5eHN2cmdydzJwdzYzYmovY2xpZW50X2FwaSIsImVudmlyb25tZW50Ijoic2FuZGJveCIsIm1lcmNoYW50SWQiOiJjOXhzdnJncncycHc2M2JqIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhdXRoVXJsIjoiaHR0cHM6Ly9hdXRoLnZlbm1vLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJ2ZW5tbyI6Im9mZiIsImNoYWxsZW5nZXMiOltdLCJ0aHJlZURTZWN1cmVFbmFibGVkIjp0cnVlLCJhbmFseXRpY3MiOnsidXJsIjoiaHR0cHM6Ly9vcmlnaW4tYW5hbHl0aWNzLXNhbmQuc2FuZGJveC5icmFpbnRyZWUtYXBpLmNvbS9jOXhzdnJncncycHc2M2JqIn0sInBheXBhbEVuYWJsZWQiOnRydWUsInBheXBhbCI6eyJiaWxsaW5nQWdyZWVtZW50c0VuYWJsZWQiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImFsbG93SHR0cCI6dHJ1ZSwiZGlzcGxheU5hbWUiOiJ0M3N0IiwiY2xpZW50SWQiOiJBZldnMnlzRldTMTlUSHI3RFpiazRBYzNjS1NXYTFSX2VQWk9XY3RGQ0J2U3BFaU10SXVpTDBiUGJzVjlnd2pWUnFrRHAwVXZaYmc3RHFlayIsInByaXZhY3lVcmwiOiJodHRwOi8vZXhhbXBsZS5jb20vcHAiLCJ1c2VyQWdyZWVtZW50VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3RvcyIsImJhc2VVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbSIsImFzc2V0c1VybCI6Imh0dHBzOi8vY2hlY2tvdXQucGF5cGFsLmNvbSIsImRpcmVjdEJhc2VVcmwiOm51bGwsImVudmlyb25tZW50Ijoib2ZmbGluZSIsImJyYWludHJlZUNsaWVudElkIjoibWFzdGVyY2xpZW50MyIsIm1lcmNoYW50QWNjb3VudElkIjoiYzl4c3ZyZ3J3MnB3NjNiaiIsImN1cnJlbmN5SXNvQ29kZSI6IlBMTiJ9fQ=="}},"extensions":{"requestId":"d06a5caf-e100-44fc-8103-9453906cf7f5"}}'
+  recorded_at: Wed, 20 Jan 2021 14:18:27 GMT
+recorded_with: VCR 6.0.0

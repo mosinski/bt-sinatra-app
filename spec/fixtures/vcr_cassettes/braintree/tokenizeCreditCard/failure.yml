@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation TokenizeCreditCard($input: TokenizeCreditCardInput!)
+        {\n  tokenizeCreditCard(input: $input) {\n    paymentMethod {\n      id\n      legacyId\n      usage\n      createdAt\n    }\n  }\n}\n","variables":{"input":{"creditCard":{"number":"36259600000004","expirationYear":"22","expirationMonth":"11","cvv":"123","cardholderName":"John
+        Doe"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic MDEyMzQ6NTY3ODk=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:37:43 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '269'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"message":"Credit card type is not accepted by this merchant
+        account","locations":[{"line":2,"column":3}],"path":["tokenizeCreditCard"],"extensions":{"errorClass":"VALIDATION","errorType":"user_error","inputPath":["input","creditCard","number"],"legacyCode":"81703"}}],"data":{"tokenizeCreditCard":null},"extensions":{"requestId":"d6bbf881-7c97-49f6-b23b-de32fe6c9543"}}'
+  recorded_at: Wed, 20 Jan 2021 14:37:43 GMT
+recorded_with: VCR 6.0.0

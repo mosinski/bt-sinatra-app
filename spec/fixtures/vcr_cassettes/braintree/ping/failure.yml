@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"query {\n  ping\n}\n","variables":{"input":{}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic enlxbjQ4dmtiN2hiMnJqeDoxMjM=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:12:50 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '219'
+    body:
+      encoding: UTF-8
+      string: '{"extensions":{"requestId":"c7f08c23-8cbf-4fd0-b63d-14930acc4d23"},"data":null,"errors":[{"message":"Authentication
+        credentials are invalid.","extensions":{"errorClass":"AUTHENTICATION","errorType":"developer_error"}}]}'
+  recorded_at: Wed, 20 Jan 2021 14:12:51 GMT
+recorded_with: VCR 6.0.0

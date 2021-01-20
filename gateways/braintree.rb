@@ -28,7 +28,7 @@ class Braintree
     request(query, input)
   end
 
-  def tokenizeCreditCard(number, expiration, ccv, name, biling)
+  def tokenizeCreditCard(number, expiration, ccv, name)
     query = read_query("tokens/credit_card")
     input = {
       "creditCard": {
@@ -53,30 +53,30 @@ class Braintree
     request(query, input)
   end
 
-  def chargeCreditCard(accountId, amount)
+  def chargeCreditCard(paymentMethodId, amount)
     query = read_query("transactions/creditcard")
     input = {
-      "paymentMethodId": accountId,
+      "paymentMethodId": paymentMethodId,
       "transaction": { "amount": amount }
     }
 
     request(query, input)
   end
 
-  def chargePayPalAccount(accountId, amount)
+  def chargePayPalAccount(paymentMethodId, amount)
     query = read_query("transactions/paypal")
     input = {
-      "paymentMethodId": accountId,
+      "paymentMethodId": paymentMethodId,
       "transaction": { "amount": amount }
     }
 
     request(query, input)
   end
 
-  def chargeVenmoAccount(accountId, amount)
+  def chargeVenmoAccount(paymentMethodId, amount)
     query = read_query("transactions/venmo")
     input = {
-      "paymentMethodId": accountId,
+      "paymentMethodId": paymentMethodId,
       "transaction": { "amount": amount }
     }
 
@@ -102,22 +102,22 @@ class Braintree
   end
 
   def logging?
-    ENV['BT_LOG'] == "true"
+    ENV.fetch("BT_LOG") == "true"
   end
 
   def host
-    ENV['BT_API_URL']
+    ENV.fetch("BT_API_URL")
   end
 
   def public_key
-    ENV['BT_PUBLIC_KEY']
+    ENV.fetch("BT_PUBLIC_KEY")
   end
 
   def private_key
-    ENV['BT_PRIVATE_KEY']
+    ENV.fetch("BT_PRIVATE_KEY")
   end
 
   def merchant_id
-    ENV['BT_MERCHANT_ID']
+    ENV.fetch("BT_MERCHANT_ID")
   end
 end

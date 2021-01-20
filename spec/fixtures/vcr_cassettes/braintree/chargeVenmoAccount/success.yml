@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://payments.sandbox.braintree-api.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"query":"mutation ChargeVenmoAccount($input: ChargeVenmoAccountInput!)
+        {\n  chargeVenmoAccount(input: $input) {\n    transaction {\n      id\n      status\n    }\n  }\n}\n","variables":{"input":{"paymentMethodId":"fake-venmo-account-nonce","transaction":{"amount":"10.00"}}}}'
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Authorization:
+      - Basic MDEyMzQ6NTY3ODk=
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2019-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Jan 2021 14:49:55 GMT
+      Content-Type:
+      - application/json
+      Braintree-Version:
+      - '2016-10-07'
+      Vary:
+      - Accept-Encoding
+      - Braintree-Version
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '275'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"message":"Payment instrument type is not accepted by this
+        merchant account.","locations":[{"line":2,"column":3}],"path":["chargeVenmoAccount"],"extensions":{"errorClass":"VALIDATION","errorType":"user_error","inputPath":["input","paymentMethodId"],"legacyCode":"91567"}}],"data":{"chargeVenmoAccount":null},"extensions":{"requestId":"a7b5a7d4-553f-43f8-a1a9-9f9e4df4819f"}}'
+  recorded_at: Wed, 20 Jan 2021 14:49:57 GMT
+recorded_with: VCR 6.0.0
