@@ -1,0 +1,5 @@
+mutation CreateClientToken($input: CreateClientTokenInput) {
+  createClientToken(input: $input) {
+    clientToken
+  }
+}

@@ -1,0 +1,8 @@
+mutation ChargeVenmoAccount($input: ChargeVenmoAccountInput!) {
+  chargeVenmoAccount(input: $input) {
+    transaction {
+      id
+      status
+    }
+  }
+}

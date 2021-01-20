@@ -1,0 +1,15 @@
+query Search($input: TransactionSearchInput!) {
+  search {
+    transactions(input: $input) {
+      edges {
+        node {
+          id
+        }
+      }
+      pageInfo {
+        startCursor
+        endCursor
+      }
+    }
+  }
+}

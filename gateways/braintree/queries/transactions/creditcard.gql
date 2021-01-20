@@ -1,0 +1,8 @@
+mutation ChargeCreditCard($input: ChargeCreditCardInput!) {
+  chargeCreditCard(input: $input) {
+    transaction {
+      id
+      status
+    }
+  }
+}

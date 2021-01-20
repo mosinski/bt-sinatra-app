@@ -1,0 +1,8 @@
+mutation ChargePayPalAccount($input: ChargePayPalAccountInput!) {
+  chargePayPalAccount(input: $input) {
+    transaction {
+      id
+      status
+    }
+  }
+}

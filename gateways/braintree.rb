@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Braintree
-  def initialize(client = Faraday.new)
-    @connection = client
+  def initialize
+    @connection = Faraday.new do |faraday|
+      faraday.response :logger, ::Logger.new(STDOUT), bodies: true if logging?
+    end
   end
 
   def ping
@@ -12,9 +14,71 @@ class Braintree
     request(query, input)
   end
 
-  def chargePaymentMethod
-    query = read_query("transactions/create")
-    input = { "paymentMethodId": "nonce_from_the_client", "transaction": { "amount": "10.00" } }
+  def search
+    query = read_query("search")
+    input = { "merchantAccountId": { "is": merchant_id } }
+
+    request(query, input)
+  end
+
+  def createClientToken
+    query = read_query("tokens/create")
+    input = { "clientToken": { "merchantAccountId": merchant_id } }
+
+    request(query, input)
+  end
+
+  def tokenizeCreditCard(number, expiration, ccv, name, biling)
+    query = read_query("tokens/credit_card")
+    input = {
+      "creditCard": {
+        "number": number,
+        "expirationYear": expiration.split('/').last,
+        "expirationMonth": expiration.split('/').first,
+        "cvv": ccv,
+        "cardholderName": name
+      }
+    }
+
+    request(query, input)
+  end
+
+  def chargePaymentMethod(paymentMethodId, amount)
+    query = read_query("transactions/any")
+    input = {
+      "paymentMethodId": paymentMethodId,
+      "transaction": { "amount": amount }
+    }
+
+    request(query, input)
+  end
+
+  def chargeCreditCard(accountId, amount)
+    query = read_query("transactions/creditcard")
+    input = {
+      "paymentMethodId": accountId,
+      "transaction": { "amount": amount }
+    }
+
+    request(query, input)
+  end
+
+  def chargePayPalAccount(accountId, amount)
+    query = read_query("transactions/paypal")
+    input = {
+      "paymentMethodId": accountId,
+      "transaction": { "amount": amount }
+    }
+
+    request(query, input)
+  end
+
+  def chargeVenmoAccount(accountId, amount)
+    query = read_query("transactions/venmo")
+    input = {
+      "paymentMethodId": accountId,
+      "transaction": { "amount": amount }
+    }
 
     request(query, input)
   end
@@ -37,6 +101,10 @@ class Braintree
     File.open("gateways/braintree/queries/#{path}.gql").read
   end
 
+  def logging?
+    ENV['BT_LOG'] == "true"
+  end
+
   def host
     ENV['BT_API_URL']
   end
@@ -47,5 +115,9 @@ class Braintree
 
   def private_key
     ENV['BT_PRIVATE_KEY']
+  end
+
+  def merchant_id
+    ENV['BT_MERCHANT_ID']
   end
 end
