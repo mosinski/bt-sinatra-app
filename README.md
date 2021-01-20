@@ -22,9 +22,10 @@
     rackup
     ```
 
+    Visit site: [localhost:9292](http://localhost:9292)
+
 ## Running Tests
 
 ```sh
 rspec
 ```
-Visit site: [localhost:9292](http://localhost:9292)
